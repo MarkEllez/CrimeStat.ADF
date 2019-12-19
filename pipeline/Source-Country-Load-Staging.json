@@ -1,0 +1,174 @@
+{
+	"name": "Source-Country-Load-Staging",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_vxb",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "crimestat-sourcefiles/CrimeStat.Source.Countries/CrimeStat.Source.Countries/ISOcountries.csv"
+					},
+					{
+						"name": "Destination",
+						"value": "staging.Countries_untyped"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "alpha-2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "alpha-2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "alpha-3",
+									"type": "String"
+								},
+								"sink": {
+									"name": "alpha-3",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "country-code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "country-code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "iso_3166-2",
+									"type": "String"
+								},
+								"sink": {
+									"name": "iso_3166-2",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "region",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sub-region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sub-region",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "intermediate-region",
+									"type": "String"
+								},
+								"sink": {
+									"name": "intermediate-region",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "region-code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "region-code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "sub-region-code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "sub-region-code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "intermediate-region-code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "intermediate-region-code",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_vxb",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_vxb",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

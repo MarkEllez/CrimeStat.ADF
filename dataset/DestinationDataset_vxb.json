@@ -1,0 +1,83 @@
+{
+	"name": "DestinationDataset_vxb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "crimestatdwhlinkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "name",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "alpha-2",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "alpha-3",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "country-code",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "iso_3166-2",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "region",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "sub-region",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "intermediate-region",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "region-code",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "sub-region-code",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			},
+			{
+				"name": "intermediate-region-code",
+				"type": "nvarchar",
+				"precision": 255,
+				"scale": 255
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "Countries_untyped"
+		}
+	}
+}
