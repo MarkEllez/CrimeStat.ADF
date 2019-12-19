@@ -1,0 +1,24 @@
+{
+	"name": "SourceDataset_vxb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "crimestatstacyllinkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ISOcountries.csv",
+				"folderPath": "CrimeStat.Source.Countries/CrimeStat.Source.Countries",
+				"container": "crimestat-sourcefiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
