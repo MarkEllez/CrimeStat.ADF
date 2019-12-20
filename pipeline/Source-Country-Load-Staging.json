@@ -36,7 +36,9 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink"
+						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE [staging].[Countries_untyped];",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
