@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_vxb",
+				"name": "copy-country-staging",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -157,7 +157,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_vxb",
+						"referenceName": "dataset_src_country",
 						"type": "DatasetReference"
 					}
 				],
