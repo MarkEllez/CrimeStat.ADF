@@ -1,0 +1,63 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "crimestatdafayldev"
+		},
+		"crimestatdwhlinkedservice_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'crimestatdwhlinkedservice'"
+		},
+		"crimestatstacyllinkedservice_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'crimestatstacyllinkedservice'"
+		},
+		"AzureKeyVaultcrimestatkevayllinkedservice_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://crimestatkevayldev.vault.azure.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"crimestatdwhlinkedservice_connectionString": {
+						"value": "[parameters('crimestatdwhlinkedservice_connectionString')]"
+					},
+					"crimestatstacyllinkedservice_connectionString": {
+						"value": "[parameters('crimestatstacyllinkedservice_connectionString')]"
+					},
+					"AzureKeyVaultcrimestatkevayllinkedservice_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVaultcrimestatkevayllinkedservice_properties_typeProperties_baseUrl')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
