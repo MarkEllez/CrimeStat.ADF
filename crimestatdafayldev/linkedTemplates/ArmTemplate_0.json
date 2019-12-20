@@ -64,7 +64,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DestinationDataset_vxb')]",
+			"name": "[concat(parameters('factoryName'), '/dataset_dst_staging_country_untyped')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -152,7 +152,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SourceDataset_vxb')]",
+			"name": "[concat(parameters('factoryName'), '/dataset_src_country')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -174,7 +174,52 @@
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "name",
+						"type": "String"
+					},
+					{
+						"name": "alpha-2",
+						"type": "String"
+					},
+					{
+						"name": "alpha-3",
+						"type": "String"
+					},
+					{
+						"name": "country-code",
+						"type": "String"
+					},
+					{
+						"name": "iso_3166-2",
+						"type": "String"
+					},
+					{
+						"name": "region",
+						"type": "String"
+					},
+					{
+						"name": "sub-region",
+						"type": "String"
+					},
+					{
+						"name": "intermediate-region",
+						"type": "String"
+					},
+					{
+						"name": "region-code",
+						"type": "String"
+					},
+					{
+						"name": "sub-region-code",
+						"type": "String"
+					},
+					{
+						"name": "intermediate-region-code",
+						"type": "String"
+					}
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/crimestatstacyllinkedservice')]"
@@ -187,7 +232,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy_vxb",
+						"name": "copy-country-staging",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -220,7 +265,9 @@
 								}
 							},
 							"sink": {
-								"type": "AzureSqlSink"
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE [staging].[Countries_untyped];",
+								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
 							"translator": {
@@ -341,14 +388,14 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "SourceDataset_vxb",
+								"referenceName": "dataset_src_country",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DestinationDataset_vxb",
+								"referenceName": "dataset_dst_staging_country_untyped",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -358,8 +405,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/SourceDataset_vxb')]",
-				"[concat(variables('factoryId'), '/datasets/DestinationDataset_vxb')]"
+				"[concat(variables('factoryId'), '/datasets/dataset_src_country')]",
+				"[concat(variables('factoryId'), '/datasets/dataset_dst_staging_country_untyped')]"
 			]
 		},
 		{
