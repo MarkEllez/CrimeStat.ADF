@@ -1,0 +1,10 @@
+{
+	"name": "AzureKeyVaultcrimestatkevayllinkedservice",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://crimestatkevayldev.vault.azure.net/"
+		}
+	}
+}
