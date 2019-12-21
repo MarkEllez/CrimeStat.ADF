@@ -1,0 +1,12 @@
+{
+	"name": "dataset_crimestat_dwh_wb_population_pivoted",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "crimestatdwhlinkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
