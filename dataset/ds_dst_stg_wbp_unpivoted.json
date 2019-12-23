@@ -1,0 +1,68 @@
+{
+	"name": "ds_dst_stg_wbp_unpivoted",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "crimestatdwhlinkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Country Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Country Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Indicator Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Indicator Code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Year",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Population",
+				"type": "nvarchar"
+			},
+			{
+				"name": "sysETLrunId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sysCreatedAt",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "sysChangedAt",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "sysCreatedBy",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sysChangedBy",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "staging",
+			"table": "WorldBankPopulation_unpivoted"
+		}
+	}
+}
