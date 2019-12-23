@@ -3,10 +3,18 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dataset_dst_staging_wb_population_untyped",
+						"type": "DatasetReference"
+					},
+					"name": "pivoteddata"
+				}
+			],
 			"sinks": [],
 			"transformations": [],
-			"script": "\n"
+			"script": "\n\nsource(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tisolationLevel: 'READ_UNCOMMITTED',\n\tformat: 'table') ~> pivoteddata"
 		}
 	}
 }
