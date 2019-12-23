@@ -1,5 +1,5 @@
 {
-	"name": "dataset_dst_staging_wb_population",
+	"name": "dataset_dst_staging_wb_population_untyped",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "crimestatdwhlinkedservice",
