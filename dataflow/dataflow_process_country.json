@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "dataset_crimestat_dwh_wb_population_pivoted",
+						"referenceName": "dataset_dst_staging_wb_population",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
