@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "staging",
-			"table": "WorldBankPopulation_unpivoted"
+			"table": "WorldBankPopulation_untyped"
 		}
 	}
 }
