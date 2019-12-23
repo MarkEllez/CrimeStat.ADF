@@ -10,7 +10,7 @@
 					"referenceName": "AzureKeyVaultcrimestatkevayllinkedservice",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "crimestatdwh-conenctionstring"
+				"secretName": "crimestatylsecret"
 			}
 		}
 	},
